@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/Research/approx/abft-ke/src/Common/func.h
+
+/home/Research/approx/abft-ke/src/HammingAbft/HCAbft.c
+stdio.h
+-
+mpi.h
+-
+string.h
+-
+math.h
+-
+stdlib.h
+-
+../Common/func.h
+/home/Research/approx/abft-ke/src/Common/func.h
+
