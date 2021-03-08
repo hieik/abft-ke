@@ -4,7 +4,7 @@
 #include<math.h>
 #include<stdlib.h>
 #include"../Common/func.h"
-#define BER 1e-5
+#define BER 1e-12
 #define N 2048 // N is matrix size
 
 
@@ -111,6 +111,7 @@ int main(int argc, char** argv)
 	init_matrix(sub_b, N, block_size_col, 0);
 	init_matrix(sub_c, block_size_row, block_size_col, 0);
 
+	//distrubute submatrix, use MPI_Send and MPI_Recv
 	if(id_proc == root)
 	{
 		for (int i = 1; i < num_row; i++)
@@ -126,16 +127,6 @@ int main(int argc, char** argv)
 		memcpy(sub_a, a, block_size_row * N * sizeof(int));
 		memcpy(sub_b, b, block_size_col * N * sizeof(int));
 	}
-	//if (p_j == 0)
-	//{
-	//	memcpy(sub_a, a + p_i * block_size_row * N, block_size_row * N * sizeof(int));
-	//} 
-	//
-	//if (p_i == 0)
-	//{
-	//	memcpy(sub_b, b + p_j * block_size_col * N, block_size_col * N * sizeof(int));
-	//}
-	
 	if (p_j == 0 && id_proc != root)
 	{
 		MPI_Recv(sub_a, block_size_row * N, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
@@ -144,6 +135,7 @@ int main(int argc, char** argv)
 	{
 		MPI_Recv(sub_b, block_size_col * N, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
 	}
+
 	sub_a_hc = hamming_checksum_matrix_translation(sub_a, block_size_row, N);
 	sub_b_hc = hamming_checksum_matrix_translation(sub_b, N, block_size_col);
 
