@@ -1,5 +1,5 @@
-/home/Research/approx/abft-ke/build/CMakeFiles/rebuild_cache.dir
-/home/Research/approx/abft-ke/build/CMakeFiles/edit_cache.dir
-/home/Research/approx/abft-ke/build/CMakeFiles/Hello.dir
-/home/Research/approx/abft-ke/build/CMakeFiles/HCAbft.dir
-/home/Research/approx/abft-ke/build/CMakeFiles/MM.dir
+/root/research/approx/abft-ke/build/CMakeFiles/rebuild_cache.dir
+/root/research/approx/abft-ke/build/CMakeFiles/edit_cache.dir
+/root/research/approx/abft-ke/build/CMakeFiles/Hello.dir
+/root/research/approx/abft-ke/build/CMakeFiles/HCAbft.dir
+/root/research/approx/abft-ke/build/CMakeFiles/MM.dir

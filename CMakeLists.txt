@@ -4,8 +4,8 @@ cmake_minimum_required(VERSION 3.10)
 project(ABFT VERSION 1.0)
 
 set(CMAKE_CXX_FLAGES "${CMAKE_CXX_FLAGES}" -std=gnu99)
-set(CMAKE_C_COMPILER "/home/Research/SimGrid-3.12/bin/smpicc")
-set(CMAKE_CXX_COMPILER "/home/Research/SimGrid-3.12/bin/smpicc")
+set(CMAKE_C_COMPILER "/opt/simgrid/bin/smpicc")
+set(CMAKE_CXX_COMPILER "/opt/simgrid/bin/smpicc")
 
 set(SimGrid_LIBRARY "/home/Research/SimGrid-3.12/lib/")
 

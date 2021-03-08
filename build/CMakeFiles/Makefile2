@@ -59,10 +59,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Research/approx/abft-ke
+CMAKE_SOURCE_DIR = /root/research/approx/abft-ke
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Research/approx/abft-ke/build
+CMAKE_BINARY_DIR = /root/research/approx/abft-ke/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/Hello.dir
@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /home/Research/approx/abft-ke/build
 CMakeFiles/Hello.dir/all:
 	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/depend
 	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=6,7,8 "Built target Hello"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=6,7,8 "Built target Hello"
 .PHONY : CMakeFiles/Hello.dir/all
 
 # Include target in all.
@@ -81,9 +81,9 @@ all: CMakeFiles/Hello.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Hello.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Research/approx/abft-ke/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/research/approx/abft-ke/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Hello.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Research/approx/abft-ke/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/research/approx/abft-ke/build/CMakeFiles 0
 .PHONY : CMakeFiles/Hello.dir/rule
 
 # Convenience name for target.
@@ -108,7 +108,7 @@ clean: CMakeFiles/Hello.dir/clean
 CMakeFiles/HCAbft.dir/all:
 	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/depend
 	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target HCAbft"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target HCAbft"
 .PHONY : CMakeFiles/HCAbft.dir/all
 
 # Include target in all.
@@ -118,9 +118,9 @@ all: CMakeFiles/HCAbft.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/HCAbft.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Research/approx/abft-ke/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/research/approx/abft-ke/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/HCAbft.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Research/approx/abft-ke/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/research/approx/abft-ke/build/CMakeFiles 0
 .PHONY : CMakeFiles/HCAbft.dir/rule
 
 # Convenience name for target.
@@ -145,7 +145,7 @@ clean: CMakeFiles/HCAbft.dir/clean
 CMakeFiles/MM.dir/all:
 	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/depend
 	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=9,10,11,12,13 "Built target MM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=9,10,11,12,13 "Built target MM"
 .PHONY : CMakeFiles/MM.dir/all
 
 # Include target in all.
@@ -155,9 +155,9 @@ all: CMakeFiles/MM.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MM.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Research/approx/abft-ke/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/research/approx/abft-ke/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/MM.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Research/approx/abft-ke/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/research/approx/abft-ke/build/CMakeFiles 0
 .PHONY : CMakeFiles/MM.dir/rule
 
 # Convenience name for target.

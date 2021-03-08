@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/Research/approx/abft-ke/src/Common/ber.c" "/home/Research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/Common/ber.c.o"
-  "/home/Research/approx/abft-ke/src/Common/hamming_cs.c" "/home/Research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/Common/hamming_cs.c.o"
-  "/home/Research/approx/abft-ke/src/Common/matrix_op.c" "/home/Research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/Common/matrix_op.c.o"
-  "/home/Research/approx/abft-ke/src/HammingAbft/HCAbft.c" "/home/Research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/HammingAbft/HCAbft.c.o"
+  "/root/research/approx/abft-ke/src/Common/ber.c" "/root/research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/Common/ber.c.o"
+  "/root/research/approx/abft-ke/src/Common/hamming_cs.c" "/root/research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/Common/hamming_cs.c.o"
+  "/root/research/approx/abft-ke/src/Common/matrix_op.c" "/root/research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/Common/matrix_op.c.o"
+  "/root/research/approx/abft-ke/src/HammingAbft/HCAbft.c" "/root/research/approx/abft-ke/build/CMakeFiles/HCAbft.dir/src/HammingAbft/HCAbft.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

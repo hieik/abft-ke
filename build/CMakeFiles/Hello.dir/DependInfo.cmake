@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/Research/approx/abft-ke/src/Common/hamming_cs.c" "/home/Research/approx/abft-ke/build/CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o"
-  "/home/Research/approx/abft-ke/src/HammingAbft/test.c" "/home/Research/approx/abft-ke/build/CMakeFiles/Hello.dir/src/HammingAbft/test.c.o"
+  "/root/research/approx/abft-ke/src/Common/hamming_cs.c" "/root/research/approx/abft-ke/build/CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o"
+  "/root/research/approx/abft-ke/src/HammingAbft/test.c" "/root/research/approx/abft-ke/build/CMakeFiles/Hello.dir/src/HammingAbft/test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

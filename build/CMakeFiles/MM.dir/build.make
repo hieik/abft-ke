@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Research/approx/abft-ke
+CMAKE_SOURCE_DIR = /root/research/approx/abft-ke
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Research/approx/abft-ke/build
+CMAKE_BINARY_DIR = /root/research/approx/abft-ke/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/MM.dir/depend.make
@@ -59,55 +59,55 @@ include CMakeFiles/MM.dir/flags.make
 
 CMakeFiles/MM.dir/src/MM/MM.c.o: CMakeFiles/MM.dir/flags.make
 CMakeFiles/MM.dir/src/MM/MM.c.o: ../src/MM/MM.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/MM.dir/src/MM/MM.c.o"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/MM/MM.c.o   -c /home/Research/approx/abft-ke/src/MM/MM.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/MM.dir/src/MM/MM.c.o"
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/MM/MM.c.o   -c /root/research/approx/abft-ke/src/MM/MM.c
 
 CMakeFiles/MM.dir/src/MM/MM.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MM.dir/src/MM/MM.c.i"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Research/approx/abft-ke/src/MM/MM.c > CMakeFiles/MM.dir/src/MM/MM.c.i
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/research/approx/abft-ke/src/MM/MM.c > CMakeFiles/MM.dir/src/MM/MM.c.i
 
 CMakeFiles/MM.dir/src/MM/MM.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MM.dir/src/MM/MM.c.s"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Research/approx/abft-ke/src/MM/MM.c -o CMakeFiles/MM.dir/src/MM/MM.c.s
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/research/approx/abft-ke/src/MM/MM.c -o CMakeFiles/MM.dir/src/MM/MM.c.s
 
 CMakeFiles/MM.dir/src/Common/matrix_op.c.o: CMakeFiles/MM.dir/flags.make
 CMakeFiles/MM.dir/src/Common/matrix_op.c.o: ../src/Common/matrix_op.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/MM.dir/src/Common/matrix_op.c.o"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/Common/matrix_op.c.o   -c /home/Research/approx/abft-ke/src/Common/matrix_op.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/MM.dir/src/Common/matrix_op.c.o"
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/Common/matrix_op.c.o   -c /root/research/approx/abft-ke/src/Common/matrix_op.c
 
 CMakeFiles/MM.dir/src/Common/matrix_op.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MM.dir/src/Common/matrix_op.c.i"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Research/approx/abft-ke/src/Common/matrix_op.c > CMakeFiles/MM.dir/src/Common/matrix_op.c.i
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/research/approx/abft-ke/src/Common/matrix_op.c > CMakeFiles/MM.dir/src/Common/matrix_op.c.i
 
 CMakeFiles/MM.dir/src/Common/matrix_op.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MM.dir/src/Common/matrix_op.c.s"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Research/approx/abft-ke/src/Common/matrix_op.c -o CMakeFiles/MM.dir/src/Common/matrix_op.c.s
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/research/approx/abft-ke/src/Common/matrix_op.c -o CMakeFiles/MM.dir/src/Common/matrix_op.c.s
 
 CMakeFiles/MM.dir/src/Common/hamming_cs.c.o: CMakeFiles/MM.dir/flags.make
 CMakeFiles/MM.dir/src/Common/hamming_cs.c.o: ../src/Common/hamming_cs.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/MM.dir/src/Common/hamming_cs.c.o"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/Common/hamming_cs.c.o   -c /home/Research/approx/abft-ke/src/Common/hamming_cs.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/MM.dir/src/Common/hamming_cs.c.o"
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/Common/hamming_cs.c.o   -c /root/research/approx/abft-ke/src/Common/hamming_cs.c
 
 CMakeFiles/MM.dir/src/Common/hamming_cs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MM.dir/src/Common/hamming_cs.c.i"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Research/approx/abft-ke/src/Common/hamming_cs.c > CMakeFiles/MM.dir/src/Common/hamming_cs.c.i
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/research/approx/abft-ke/src/Common/hamming_cs.c > CMakeFiles/MM.dir/src/Common/hamming_cs.c.i
 
 CMakeFiles/MM.dir/src/Common/hamming_cs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MM.dir/src/Common/hamming_cs.c.s"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Research/approx/abft-ke/src/Common/hamming_cs.c -o CMakeFiles/MM.dir/src/Common/hamming_cs.c.s
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/research/approx/abft-ke/src/Common/hamming_cs.c -o CMakeFiles/MM.dir/src/Common/hamming_cs.c.s
 
 CMakeFiles/MM.dir/src/Common/ber.c.o: CMakeFiles/MM.dir/flags.make
 CMakeFiles/MM.dir/src/Common/ber.c.o: ../src/Common/ber.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/MM.dir/src/Common/ber.c.o"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/Common/ber.c.o   -c /home/Research/approx/abft-ke/src/Common/ber.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/MM.dir/src/Common/ber.c.o"
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MM.dir/src/Common/ber.c.o   -c /root/research/approx/abft-ke/src/Common/ber.c
 
 CMakeFiles/MM.dir/src/Common/ber.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MM.dir/src/Common/ber.c.i"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Research/approx/abft-ke/src/Common/ber.c > CMakeFiles/MM.dir/src/Common/ber.c.i
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/research/approx/abft-ke/src/Common/ber.c > CMakeFiles/MM.dir/src/Common/ber.c.i
 
 CMakeFiles/MM.dir/src/Common/ber.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MM.dir/src/Common/ber.c.s"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Research/approx/abft-ke/src/Common/ber.c -o CMakeFiles/MM.dir/src/Common/ber.c.s
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/research/approx/abft-ke/src/Common/ber.c -o CMakeFiles/MM.dir/src/Common/ber.c.s
 
 # Object files for target MM
 MM_OBJECTS = \
@@ -125,7 +125,7 @@ MM: CMakeFiles/MM.dir/src/Common/hamming_cs.c.o
 MM: CMakeFiles/MM.dir/src/Common/ber.c.o
 MM: CMakeFiles/MM.dir/build.make
 MM: CMakeFiles/MM.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable MM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable MM"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MM.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -138,6 +138,6 @@ CMakeFiles/MM.dir/clean:
 .PHONY : CMakeFiles/MM.dir/clean
 
 CMakeFiles/MM.dir/depend:
-	cd /home/Research/approx/abft-ke/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/Research/approx/abft-ke /home/Research/approx/abft-ke /home/Research/approx/abft-ke/build /home/Research/approx/abft-ke/build /home/Research/approx/abft-ke/build/CMakeFiles/MM.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/research/approx/abft-ke/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/research/approx/abft-ke /root/research/approx/abft-ke /root/research/approx/abft-ke/build /root/research/approx/abft-ke/build /root/research/approx/abft-ke/build/CMakeFiles/MM.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/MM.dir/depend
 

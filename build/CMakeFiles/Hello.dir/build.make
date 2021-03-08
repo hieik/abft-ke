@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Research/approx/abft-ke
+CMAKE_SOURCE_DIR = /root/research/approx/abft-ke
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Research/approx/abft-ke/build
+CMAKE_BINARY_DIR = /root/research/approx/abft-ke/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Hello.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/Hello.dir/flags.make
 
 CMakeFiles/Hello.dir/src/HammingAbft/test.c.o: CMakeFiles/Hello.dir/flags.make
 CMakeFiles/Hello.dir/src/HammingAbft/test.c.o: ../src/HammingAbft/test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Hello.dir/src/HammingAbft/test.c.o"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Hello.dir/src/HammingAbft/test.c.o   -c /home/Research/approx/abft-ke/src/HammingAbft/test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Hello.dir/src/HammingAbft/test.c.o"
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Hello.dir/src/HammingAbft/test.c.o   -c /root/research/approx/abft-ke/src/HammingAbft/test.c
 
 CMakeFiles/Hello.dir/src/HammingAbft/test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Hello.dir/src/HammingAbft/test.c.i"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Research/approx/abft-ke/src/HammingAbft/test.c > CMakeFiles/Hello.dir/src/HammingAbft/test.c.i
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/research/approx/abft-ke/src/HammingAbft/test.c > CMakeFiles/Hello.dir/src/HammingAbft/test.c.i
 
 CMakeFiles/Hello.dir/src/HammingAbft/test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Hello.dir/src/HammingAbft/test.c.s"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Research/approx/abft-ke/src/HammingAbft/test.c -o CMakeFiles/Hello.dir/src/HammingAbft/test.c.s
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/research/approx/abft-ke/src/HammingAbft/test.c -o CMakeFiles/Hello.dir/src/HammingAbft/test.c.s
 
 CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o: CMakeFiles/Hello.dir/flags.make
 CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o: ../src/Common/hamming_cs.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o   -c /home/Research/approx/abft-ke/src/Common/hamming_cs.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o"
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o   -c /root/research/approx/abft-ke/src/Common/hamming_cs.c
 
 CMakeFiles/Hello.dir/src/Common/hamming_cs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Hello.dir/src/Common/hamming_cs.c.i"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/Research/approx/abft-ke/src/Common/hamming_cs.c > CMakeFiles/Hello.dir/src/Common/hamming_cs.c.i
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /root/research/approx/abft-ke/src/Common/hamming_cs.c > CMakeFiles/Hello.dir/src/Common/hamming_cs.c.i
 
 CMakeFiles/Hello.dir/src/Common/hamming_cs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Hello.dir/src/Common/hamming_cs.c.s"
-	/home/Research/SimGrid-3.12/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/Research/approx/abft-ke/src/Common/hamming_cs.c -o CMakeFiles/Hello.dir/src/Common/hamming_cs.c.s
+	/opt/simgrid/bin/smpicc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /root/research/approx/abft-ke/src/Common/hamming_cs.c -o CMakeFiles/Hello.dir/src/Common/hamming_cs.c.s
 
 # Object files for target Hello
 Hello_OBJECTS = \
@@ -95,7 +95,7 @@ Hello: CMakeFiles/Hello.dir/src/HammingAbft/test.c.o
 Hello: CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o
 Hello: CMakeFiles/Hello.dir/build.make
 Hello: CMakeFiles/Hello.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/Research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Hello"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/research/approx/abft-ke/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Hello"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Hello.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/Hello.dir/clean:
 .PHONY : CMakeFiles/Hello.dir/clean
 
 CMakeFiles/Hello.dir/depend:
-	cd /home/Research/approx/abft-ke/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/Research/approx/abft-ke /home/Research/approx/abft-ke /home/Research/approx/abft-ke/build /home/Research/approx/abft-ke/build /home/Research/approx/abft-ke/build/CMakeFiles/Hello.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/research/approx/abft-ke/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/research/approx/abft-ke /root/research/approx/abft-ke /root/research/approx/abft-ke/build /root/research/approx/abft-ke/build /root/research/approx/abft-ke/build/CMakeFiles/Hello.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Hello.dir/depend
 

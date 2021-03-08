@@ -6,11 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/home/Research/approx/abft-ke/src/Common/hamming_cs.c
+/root/research/approx/abft-ke/src/Common/ber.c
+stdlib.h
+-
+time.h
+-
+
+/root/research/approx/abft-ke/src/Common/func.h
+
+/root/research/approx/abft-ke/src/Common/hamming_cs.c
 stdio.h
 -
 string.h
 -
 stdlib.h
 -
+
+/root/research/approx/abft-ke/src/Common/matrix_op.c
+stdio.h
+-
+
+/root/research/approx/abft-ke/src/MM/MM.c
+stdio.h
+-
+mpi.h
+-
+string.h
+-
+math.h
+-
+stdlib.h
+-
+../Common/func.h
+/root/research/approx/abft-ke/src/Common/func.h
 
