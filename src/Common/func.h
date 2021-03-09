@@ -20,8 +20,11 @@ void hmc_err_cor_vector_int(int* hmc_vector, int err_loc);
 //Correct Error Location(integer Hamming Checksum Matrix)
 void hmc_err_cor_matrix_int(int* hmc_vector, int hmc_row, int hmc_col);
 
+// Create Hamming Checksum Matrix 
+int* create_hamming_checksum_matrix(int* matrix, int row, int col);
+
 //Matrix Translation(Matrix -> Hamming Checksum Matrix)
-int* hamming_checksum_matrix_translation(int* matrix, int row, int col);
+void* hamming_checksum_matrix_translation(int* matrix, int row, int col, int* hamming_checksum_matrix);
 
 //Map Hamming Checksum matrix to matrix
 void hamming_matrix_map_matrix(int* hamming_checksum_matrix, int hc_matrix_row, int hc_matrix_col, int* matrix, int matrix_row, int matrix_col);

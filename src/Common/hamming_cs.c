@@ -87,14 +87,22 @@ void hmc_err_cor_matrix_int(int* hmc_matrix, int hmc_row, int hmc_col)
 }
 				
 
-//Matrix Translation(Matrix -> Hamming Checksum Matrix)
-int* hamming_checksum_matrix_translation(int* matrix, int row, int col)
+// Create Hamming Checksum Matrix
+int* create_hamming_checksum_matrix(int* matrix, int row, int col)
 {
 	int hmc_row, hmc_col;
 	hmc_col = (col + 3) / 4 * 7;
 	hmc_row = row; 
-	
 	int* hamming_checksum_matrix = (int*)malloc(sizeof(int) * hmc_row * hmc_col);
+	return hamming_checksum_matrix;
+}
+
+//Matrix Translation(Matrix -> Hamming Checksum Matrix)
+void* hamming_checksum_matrix_translation(int* matrix, int row, int col, int* hamming_checksum_matrix)
+{
+	int hmc_row, hmc_col;
+	hmc_col = (col + 3) / 4 * 7;
+	hmc_row = row; 
 
 	for (int i = 0; i < hmc_row; i++)
 	{
@@ -113,7 +121,6 @@ int* hamming_checksum_matrix_translation(int* matrix, int row, int col)
 			}
 		}
 	}
-	return hamming_checksum_matrix;
 }
 
 //Map Hamming Checksum matrix to matrix

@@ -4,8 +4,8 @@
 #include<math.h>
 #include<stdlib.h>
 #include"../Common/func.h"
-#define BER 1e-12
-#define N 2048 // N is matrix size
+#define BER 1e-3
+#define N 64 // N is matrix size
 
 
 int main(int argc, char** argv)
@@ -110,6 +110,9 @@ int main(int argc, char** argv)
 	init_matrix(sub_a, block_size_row, N, 0);
 	init_matrix(sub_b, N, block_size_col, 0);
 	init_matrix(sub_c, block_size_row, block_size_col, 0);
+	//create sub hamming checksum matrix
+	sub_a_hc = create_hamming_checksum_matrix(sub_a, block_size_row, N);
+	sub_b_hc = create_hamming_checksum_matrix(sub_b, N, block_size_col);
 
 	//distrubute submatrix, use MPI_Send and MPI_Recv
 	if(id_proc == root)
@@ -117,27 +120,34 @@ int main(int argc, char** argv)
 		for (int i = 1; i < num_row; i++)
 		{
 			memcpy(sub_a, a + i * block_size_row * N, block_size_row * N * sizeof(int));
-			MPI_Send(sub_a, block_size_row * N, MPI_INT, i * num_col, 1, MPI_COMM_WORLD);	
+			hamming_checksum_matrix_translation(sub_a, block_size_row, N, sub_a_hc);
+			MPI_Send(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, i * num_col, 1, MPI_COMM_WORLD);	
 		}
 		for (int j = 1; j < num_col; j++)
 		{
 			memcpy(sub_b, b + j * block_size_col * N, block_size_col * N * sizeof(int));
-			MPI_Send(sub_b, block_size_col * N, MPI_INT, j, 1, MPI_COMM_WORLD);
+			hamming_checksum_matrix_translation(sub_b, N, block_size_col, sub_b_hc);
+			MPI_Send(sub_b_hc, sub_b_hc_row * sub_b_hc_col, MPI_INT, j, 1, MPI_COMM_WORLD);
 		}
 		memcpy(sub_a, a, block_size_row * N * sizeof(int));
 		memcpy(sub_b, b, block_size_col * N * sizeof(int));
+		hamming_checksum_matrix_translation(sub_a, block_size_row, N, sub_a_hc);
+		hamming_checksum_matrix_translation(sub_b, N, block_size_col, sub_b_hc);
 	}
 	if (p_j == 0 && id_proc != root)
 	{
-		MPI_Recv(sub_a, block_size_row * N, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
+		MPI_Recv(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
+		bit_flop_int(sub_a_hc, sub_a_hc_row * sub_a_hc_col, BER);
+		//Error Correction
+		hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 	}
 	if (p_i == 0 && id_proc != root)
 	{
-		MPI_Recv(sub_b, block_size_col * N, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
+		MPI_Recv(sub_b_hc, sub_b_hc_row * sub_b_hc_col, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
+		bit_flop_int(sub_b_hc, sub_b_hc_row * sub_b_hc_col, BER);
+		//Error Correction
+		hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 	}
-
-	sub_a_hc = hamming_checksum_matrix_translation(sub_a, block_size_row, N);
-	sub_b_hc = hamming_checksum_matrix_translation(sub_b, N, block_size_col);
 
 	if (id_proc == root)
 	{
@@ -153,33 +163,30 @@ int main(int argc, char** argv)
 	{
 		printf("processor %d ,init use time %f\n", id_proc, time);
 	}
-
 //	Broadcast operation 
 	row_color = id_proc / num_row;
 	col_color = id_proc % num_col;
 	MPI_Comm_split(MPI_COMM_WORLD, row_color, id_proc, &row_comm);
 	MPI_Comm_split(MPI_COMM_WORLD, col_color, id_proc, &col_comm);
-
 	MPI_Barrier(MPI_COMM_WORLD);
 	//Communication time	
 	start_time = MPI_Wtime();
 	start_intern_time = MPI_Wtime();
 	MPI_Bcast(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, 0, row_comm);
 	MPI_Bcast(sub_b_hc, sub_b_hc_row * sub_b_hc_col, MPI_INT, 0, col_comm);
-
 	//Error Injection
 	if (p_j != 0 && p_i != 0)
 	{
 		bit_flop_int(sub_a_hc, sub_a_hc_row * sub_a_hc_col, BER);
-	//	bit_flop_int(sub_b_hc, sub_b_hc_row * sub_b_hc_col, BER);
+		bit_flop_int(sub_b_hc, sub_b_hc_row * sub_b_hc_col, BER);
 	}	
-	
+
 	//Error Correction
 	hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+	
 	//map hamming checksum matrix to matrix
 	hamming_matrix_map_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col, sub_a, block_size_row, N);	
 	hamming_matrix_map_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col, sub_b, N, block_size_col);	
-	
 	MPI_Barrier(MPI_COMM_WORLD);
 	communication_time = end_intern_time - start_intern_time;
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -193,16 +200,15 @@ int main(int argc, char** argv)
 			{
 				sub_c[i * block_size_row + k] += sub_a[i * block_size_row + j] * sub_b[k * block_size_col + j];
 			}
-
 		}
 	}
 
-	if (id_proc == 5)
+	if (id_proc == 8)
 	{
-	//	print_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+//		print_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 	//	print_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
-//		print_matrix(sub_a, block_size_row, N);
-//		print_matrix(sub_c, block_size_row, block_size_col);
+	//	print_matrix(sub_a, block_size_row, N);
+		print_matrix(sub_c, block_size_row, block_size_col);
 	}
 
 	end_intern_time = MPI_Wtime();
