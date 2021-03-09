@@ -25,6 +25,7 @@ int main(int argc, char** argv)
 	int *sub_a, *sub_b, *sub_c;
 	int *sub_a_hc, *sub_b_hc;//hamming checksum sub matrix
 	int sub_a_hc_row, sub_a_hc_col, sub_b_hc_row, sub_b_hc_col;
+	int sub_a_row, sub_a_col, sub_b_row, sub_b_col;
 
 	struct timeval current_time;
 
@@ -61,12 +62,14 @@ int main(int argc, char** argv)
 	block_size_col = N / num_col;
 	block_size = block_size_row * block_size_col;
 
-	sub_a_hc_row = block_size_row;
-	sub_a_hc_col = (N + 3) / 4 * 7;
-	sub_b_hc_row = N;
-	sub_b_hc_col = (block_size_col + 3) / 4 * 7;
-	//hmc_col = (col + 3) / 4 * 7;
-	//hmc_row = row;
+	sub_a_row = block_size_row;
+	sub_a_col = N;
+	sub_b_row = N;
+	sub_b_row = block_size_col;
+	sub_a_hc_row = hmc_matrix_row_parity_check(block_size_row); 
+	sub_a_hc_col = hmc_matrix_col_parity_check(N);
+	sub_b_hc_row = hmc_matrix_row_parity_check(N);
+	sub_b_hc_col = hmc_matrix_col_parity_check(block_size_col); 
 
 	if (block_size_row % 4 != 0 || block_size_col % 4 != 0)
 	{
@@ -110,8 +113,8 @@ int main(int argc, char** argv)
 	init_matrix(sub_b, N, block_size_col, 0);
 	init_matrix(sub_c, block_size_row, block_size_col, 0);
 	//create sub hamming checksum matrix
-	sub_a_hc = create_hamming_checksum_matrix(sub_a, block_size_row, N);
-	sub_b_hc = create_hamming_checksum_matrix(sub_b, N, block_size_col);
+	sub_a_hc = create_hamming_checksum_matrix_parityck(sub_a, block_size_row, N);
+	sub_b_hc = create_hamming_checksum_matrix_parityck(sub_b, N, block_size_col);
 
 	//distrubute submatrix, use MPI_Send and MPI_Recv
 	if(id_proc == root)
@@ -119,44 +122,44 @@ int main(int argc, char** argv)
 		for (int i = 1; i < num_row; i++)
 		{
 			memcpy(sub_a, a + i * block_size_row * N, block_size_row * N * sizeof(int));
-			hamming_checksum_matrix_translation(sub_a, block_size_row, N, sub_a_hc);
+			hamming_checksum_matrix_translation_parityck(sub_a, block_size_row, N, sub_a_hc);
 			MPI_Send(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, i * num_col, 1, MPI_COMM_WORLD);	
 		}
 		for (int j = 1; j < num_col; j++)
 		{
 			memcpy(sub_b, b + j * block_size_col * N, block_size_col * N * sizeof(int));
-			hamming_checksum_matrix_translation(sub_b, N, block_size_col, sub_b_hc);
+			hamming_checksum_matrix_translation_parityck(sub_b, N, block_size_col, sub_b_hc);
 			MPI_Send(sub_b_hc, sub_b_hc_row * sub_b_hc_col, MPI_INT, j, 1, MPI_COMM_WORLD);
-		}
+		} 
 		memcpy(sub_a, a, block_size_row * N * sizeof(int));
 		memcpy(sub_b, b, block_size_col * N * sizeof(int));
-		hamming_checksum_matrix_translation(sub_a, block_size_row, N, sub_a_hc);
-		hamming_checksum_matrix_translation(sub_b, N, block_size_col, sub_b_hc);
+		hamming_checksum_matrix_translation_parityck(sub_a, block_size_row, N, sub_a_hc);
+		hamming_checksum_matrix_translation_parityck(sub_b, N, block_size_col, sub_b_hc);
 	}
 	if (p_j == 0 && id_proc != root)
 	{
 		MPI_Recv(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
-		bit_flop_int(sub_a_hc, sub_a_hc_row * sub_a_hc_col, BER);
 		//Error Correction
-		hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 	}
 	if (p_i == 0 && id_proc != root)
 	{
 		MPI_Recv(sub_b_hc, sub_b_hc_row * sub_b_hc_col, MPI_INT, root, 1, MPI_COMM_WORLD, &status);
-		bit_flop_int(sub_b_hc, sub_b_hc_row * sub_b_hc_col, BER);
 		//Error Correction
-		hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 	}
 
 	if (id_proc == root)
 	{
-		//print_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
-		//print_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
+	//	printf("sub_a_row = %d, sub_a_col = %d\n", sub_a_row, sub_a_col);
+	//	printf("sub_a_hc_row = %d, sub_a_hc_col = %d\n", sub_a_hc_row, sub_a_hc_col);
+	//	print_matrix(sub_a, sub_a_row, sub_a_col);
+		//	print_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+//		print_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
 	}
 
 	end_time = MPI_Wtime();
 	//Initilization time
 	time = end_time - start_time;
+	
 	MPI_Barrier(MPI_COMM_WORLD);
 	if (id_proc == root)
 	{
@@ -181,11 +184,11 @@ int main(int argc, char** argv)
 	}	
 
 	//Error Correction
-	hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+//	hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 	
 	//map hamming checksum matrix to matrix
-	hamming_matrix_map_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col, sub_a, block_size_row, N);	
-	hamming_matrix_map_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col, sub_b, N, block_size_col);	
+	hamming_matrix_map_matrix_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col, sub_a, block_size_row, N);	
+	hamming_matrix_map_matrix_parityck(sub_b_hc, sub_b_hc_row, sub_b_hc_col, sub_b, N, block_size_col);	
 	MPI_Barrier(MPI_COMM_WORLD);
 	communication_time = end_intern_time - start_intern_time;
 	MPI_Barrier(MPI_COMM_WORLD);

@@ -3,6 +3,8 @@
 
 CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o: ../src/Common/hamming_cs.c
 
+CMakeFiles/Hello.dir/src/Common/matrix_op.c.o: ../src/Common/matrix_op.c
+
 CMakeFiles/Hello.dir/src/HammingAbft/test.c.o: ../src/Common/func.h
 CMakeFiles/Hello.dir/src/HammingAbft/test.c.o: ../src/HammingAbft/test.c
 

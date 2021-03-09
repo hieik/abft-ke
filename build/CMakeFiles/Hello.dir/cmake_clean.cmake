@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Hello.dir/src/HammingAbft/test.c.o"
   "CMakeFiles/Hello.dir/src/Common/hamming_cs.c.o"
+  "CMakeFiles/Hello.dir/src/Common/matrix_op.c.o"
   "Hello.pdb"
   "Hello"
 )

@@ -19,5 +19,5 @@ set(MATRIX_MULTIPLICATION ${PROJECT_SOURCE_DIR}/src/MM/MM.c ${PROJECT_SOURCE_DIR
 add_executable(MM ${MATRIX_MULTIPLICATION})
 target_link_libraries(MM m)
 
-set(HELLO ${PROJECT_SOURCE_DIR}/src/HammingAbft/test.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c)
+set(HELLO ${PROJECT_SOURCE_DIR}/src/HammingAbft/test.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c)
 add_executable(Hello ${HELLO})

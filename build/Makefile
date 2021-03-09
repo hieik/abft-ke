@@ -218,6 +218,7 @@ src/Common/matrix_op.o: src/Common/matrix_op.c.o
 
 # target to build an object file
 src/Common/matrix_op.c.o:
+	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/src/Common/matrix_op.c.o
 	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/src/Common/matrix_op.c.o
 	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/src/Common/matrix_op.c.o
 .PHONY : src/Common/matrix_op.c.o
@@ -228,6 +229,7 @@ src/Common/matrix_op.i: src/Common/matrix_op.c.i
 
 # target to preprocess a source file
 src/Common/matrix_op.c.i:
+	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/src/Common/matrix_op.c.i
 	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/src/Common/matrix_op.c.i
 	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/src/Common/matrix_op.c.i
 .PHONY : src/Common/matrix_op.c.i
@@ -238,6 +240,7 @@ src/Common/matrix_op.s: src/Common/matrix_op.c.s
 
 # target to generate assembly for a file
 src/Common/matrix_op.c.s:
+	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/src/Common/matrix_op.c.s
 	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/src/Common/matrix_op.c.s
 	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/src/Common/matrix_op.c.s
 .PHONY : src/Common/matrix_op.c.s

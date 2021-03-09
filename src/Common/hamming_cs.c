@@ -2,6 +2,23 @@
 #include<string.h>
 #include<stdlib.h>
 
+/*looup table
+ e = a + b + d
+ f = a + c + d
+ g = b + c + d
+
+ a b c d e f g
+ 1 2 3 4 5 6 7
+ efg   loc
+ ooo    0
+ oox    7
+ oxo    6
+ xoo    5
+ oxx    3
+ xox    2
+ xxo    1
+ xxx    4
+*/
 //Hamming Checksum Lookup Table(err_loc = 0 represnets no error occurs)
 int hmc_lookup_table(int cs1, int cs2, int cs3)
 {
@@ -75,23 +92,32 @@ void hmc_err_cor_vector_int(int* hmc_vector, int err_loc)
 //Correct Error(Hamming Checksum Matrix)
 void hmc_err_cor_matrix_int(int* hmc_matrix, int hmc_row, int hmc_col)
 {
-		int hmc_vector_size = hmc_row * hmc_col / 7;
-		int* hmc_vector = hmc_matrix;
-		int err_loc = 0;
-		for (int i = 0; i < hmc_vector_size; i++)
-		{
-			hmc_vector = hmc_matrix + i * 7;
-			err_loc = hmc_err_loc_int(hmc_vector);
-			hmc_err_cor_vector_int(hmc_vector, err_loc);
-		}
+	int hmc_vector_size = hmc_row * hmc_col / 7;
+	int* hmc_vector = hmc_matrix;
+	int err_loc = 0;
+	for (int i = 0; i < hmc_vector_size; i++)
+	{
+		hmc_vector = hmc_matrix + i * 7;
+		err_loc = hmc_err_loc_int(hmc_vector);
+		hmc_err_cor_vector_int(hmc_vector, err_loc);
+	}
 }
-				
 
 // Create Hamming Checksum Matrix
 int* create_hamming_checksum_matrix(int* matrix, int row, int col)
 {
 	int hmc_row, hmc_col;
 	hmc_col = (col + 3) / 4 * 7;
+	hmc_row = row; 
+	int* hamming_checksum_matrix = (int*)malloc(sizeof(int) * hmc_row * hmc_col);
+	return hamming_checksum_matrix;
+}
+
+// Create Hamming Checksum Matrix with parity check
+int* create_hamming_checksum_matrix_parityck(int* matrix, int row, int col)
+{
+	int hmc_row, hmc_col;
+	hmc_col = (col + 3) / 4 * 8;
 	hmc_row = row; 
 	int* hamming_checksum_matrix = (int*)malloc(sizeof(int) * hmc_row * hmc_col);
 	return hamming_checksum_matrix;
@@ -123,6 +149,38 @@ void* hamming_checksum_matrix_translation(int* matrix, int row, int col, int* ha
 	}
 }
 
+//Matrix Translation(Matrix -> Hamming Checksum Matrix) with parity check
+void* hamming_checksum_matrix_translation_parityck(int* matrix, int row, int col, int* hamming_checksum_matrix)
+{
+	int hmc_row, hmc_col;
+	hmc_col = (col + 3) / 4 * 8;
+	hmc_row = row; 
+
+	for (int i = 0; i < hmc_row; i++)
+	{
+		for (int j = 0; j < hmc_col; j++)
+		{
+			if (j % 8 < 4)
+			{
+				hamming_checksum_matrix[i * hmc_col + j] = matrix[i * col + (j / 8 * 4 + j % 8)];
+			} else {
+				switch (j % 8) 
+				{
+					case 4 : hamming_checksum_matrix[i * hmc_col + j] = hamming_checksum_matrix[i * hmc_col + j - 4] + hamming_checksum_matrix[i * hmc_col + j - 3] + hamming_checksum_matrix[i * hmc_col + j - 1]; break; 
+					case 5 : hamming_checksum_matrix[i * hmc_col + j] = hamming_checksum_matrix[i * hmc_col + j - 5] + hamming_checksum_matrix[i * hmc_col + j - 2] + hamming_checksum_matrix[i * hmc_col + j - 3]; break; 
+					case 6 : hamming_checksum_matrix[i * hmc_col + j] = hamming_checksum_matrix[i * hmc_col + j - 5] + hamming_checksum_matrix[i * hmc_col + j - 4] + hamming_checksum_matrix[i * hmc_col + j - 3]; break; 
+					case 7 : hamming_checksum_matrix[i * hmc_col + j] = 0;
+									 for (int k = 0; k < 7; k++) 
+									 {
+										 hamming_checksum_matrix[i * hmc_col + j] += hamming_checksum_matrix[i * hmc_col + k];
+									 }
+									 break;
+				}
+			}
+		}
+	}
+}
+
 //Map Hamming Checksum matrix to matrix
 void hamming_matrix_map_matrix(int* hamming_checksum_matrix, int hc_matrix_row, int hc_matrix_col, int* matrix, int matrix_row, int matrix_col)
 {
@@ -136,7 +194,24 @@ void hamming_matrix_map_matrix(int* hamming_checksum_matrix, int hc_matrix_row, 
 		}
 }	
 
+//Map Hamming Checksum(with parity check) matrix to matrix
+void hamming_matrix_map_matrix_parityck(int* hamming_checksum_matrix, int hc_matrix_row, int hc_matrix_col, int* matrix, int matrix_row, int matrix_col)
+{
+		int* hmc_vector = hamming_checksum_matrix;
+		int* vector = matrix;
+		for (int i = 0; i < hc_matrix_row * hc_matrix_col / 8; i++)
+		{
+			hmc_vector = hamming_checksum_matrix + i * 8;
+			vector = matrix + i * 4;
+			memcpy(vector, hmc_vector, 4 * sizeof(int));
+		}
+}
 int hmc_matrix_row(int row)
+{
+	return row;
+}
+
+int hmc_matrix_row_parity_check(int row)
 {
 	return row;
 }
@@ -144,5 +219,11 @@ int hmc_matrix_row(int row)
 int hmc_matrix_col(int col)
 {
 	int hmc_col = (col + 3) / 4 * 7;
+	return hmc_col;
+}
+
+int hmc_matrix_col_parity_check(int col)
+{
+	int hmc_col = (col + 3) / 4 * 8;
 	return hmc_col;
 }

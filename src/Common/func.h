@@ -20,16 +20,31 @@ void hmc_err_cor_vector_int(int* hmc_vector, int err_loc);
 //Correct Error Location(integer Hamming Checksum Matrix)
 void hmc_err_cor_matrix_int(int* hmc_vector, int hmc_row, int hmc_col);
 
-// Create Hamming Checksum Matrix 
+//Create Hamming Checksum Matrix 
 int* create_hamming_checksum_matrix(int* matrix, int row, int col);
+
+//Create Hamming Checksum Matrix with prity check
+int* create_hamming_checksum_matrix_parityck(int* matrix, int row, int col);
 
 //Matrix Translation(Matrix -> Hamming Checksum Matrix)
 void* hamming_checksum_matrix_translation(int* matrix, int row, int col, int* hamming_checksum_matrix);
 
+//Matrix Translation(Matrix -> Hamming Checksum Matrix) withparity check
+void* hamming_checksum_matrix_translation_parityck(int* matrix, int row, int col, int* hamming_checksum_matrix);
+
 //Map Hamming Checksum matrix to matrix
 void hamming_matrix_map_matrix(int* hamming_checksum_matrix, int hc_matrix_row, int hc_matrix_col, int* matrix, int matrix_row, int matrix_col);
+
+//Map Hamming Checksum matrix(with parity check) to matrix
+void hamming_matrix_map_matrix_parityck(int* hamming_checksum_matrix, int hc_matrix_row, int hc_matrix_col, int* matrix, int matrix_row, int matrix_col);
 
 //# of rows of Hamming checksum matrix
 int hmc_matrix_row(int row);
 //# of cols of Hamming checksum matrix
 int hmc_matrix_col(int col);
+
+//# of rows of Hamming checksum matrix with parity check
+int hmc_matrix_row_parity_check(int row);
+
+//# of cols of Hamming checksum matrix with parity check
+int hmc_matrix_col_parity_check(int col);
