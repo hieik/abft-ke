@@ -4,7 +4,7 @@
 #include<math.h>
 #include<stdlib.h>
 #include"../Common/func.h"
-#define BER 3e-7
+#define BER 4e-7
 #define N 1024 // N is matrix size
 
 
@@ -202,12 +202,12 @@ int main(int argc, char** argv)
 				if (id_proc == i)
 				{
 					MPI_Recv(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, i / num_row * num_row, 1, MPI_COMM_WORLD, &status);
-					printf("recv node id : %d\n", i / num_row * num_row);
+//					printf("recv node id : %d\n", i / num_row * num_row);
 				}
 				if (id_proc == i / num_row * num_row)
 				{
 					MPI_Send(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, i, 1, MPI_COMM_WORLD);	
-					printf("send node id : %d\n", i);
+//					printf("send node id : %d\n", i);
 				}
 			}
 		}
@@ -218,6 +218,7 @@ int main(int argc, char** argv)
 		sub_a_hc_is_corrected = hmc_err_cor_matrix_int_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 		MPI_Allgather(&sub_a_hc_is_corrected, 1, MPI_INT, sub_a_hc_corrected_array, 1, MPI_INT, MPI_COMM_WORLD);
 //		print_matrix(sub_a_hc_corrected_array, 1, num_proc);
+//		print_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 	}
 	
 	//map hamming checksum matrix to matrix

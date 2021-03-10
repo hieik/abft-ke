@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/HCAbft.dir/src/Common/matrix_op.c.o"
   "CMakeFiles/HCAbft.dir/src/Common/hamming_cs.c.o"
   "CMakeFiles/HCAbft.dir/src/Common/ber.c.o"
+  "CMakeFiles/HCAbft.dir/src/Common/util.c.o"
   "HCAbft.pdb"
   "HCAbft"
 )

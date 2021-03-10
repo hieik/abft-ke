@@ -7,6 +7,8 @@ CMakeFiles/MM.dir/src/Common/hamming_cs.c.o
  /root/research/approx/abft-ke/src/Common/hamming_cs.c
 CMakeFiles/MM.dir/src/Common/matrix_op.c.o
  /root/research/approx/abft-ke/src/Common/matrix_op.c
+CMakeFiles/MM.dir/src/Common/util.c.o
+ /root/research/approx/abft-ke/src/Common/util.c
 CMakeFiles/MM.dir/src/MM/MM.c.o
  /root/research/approx/abft-ke/src/Common/func.h
  /root/research/approx/abft-ke/src/MM/MM.c

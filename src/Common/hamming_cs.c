@@ -121,7 +121,7 @@ void hmc_err_cor_matrix_int(int* hmc_matrix, int hmc_row, int hmc_col)
 //Correct Error(Hamming Checksum Matrix with parity check)
 int hmc_err_cor_matrix_int_parityck(int* hmc_matrix, int hmc_row, int hmc_col)
 {
-	//If cor_success = -1, the # of errors greater than 1, the errors can not be corrected
+	//If cor_success = 0, the # of errors greater than 1, the errors can not be corrected
 	int cor_success = 1;
 	int hmc_vector_size = hmc_row * hmc_col / 8;
 	int* hmc_vector = hmc_matrix;
@@ -133,7 +133,7 @@ int hmc_err_cor_matrix_int_parityck(int* hmc_matrix, int hmc_row, int hmc_col)
 		hmc_err_cor_vector_int(hmc_vector, err_loc);
 		if (check_hamming_vector_int(hmc_vector) < 0)
 		{
-			cor_success = -1;
+			cor_success = 0;
 			break;
 		}
 	}

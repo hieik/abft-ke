@@ -7,6 +7,8 @@ CMakeFiles/HCAbft.dir/src/Common/hamming_cs.c.o
  /root/research/approx/abft-ke/src/Common/hamming_cs.c
 CMakeFiles/HCAbft.dir/src/Common/matrix_op.c.o
  /root/research/approx/abft-ke/src/Common/matrix_op.c
+CMakeFiles/HCAbft.dir/src/Common/util.c.o
+ /root/research/approx/abft-ke/src/Common/util.c
 CMakeFiles/HCAbft.dir/src/HammingAbft/HCAbft.c.o
  /root/research/approx/abft-ke/src/Common/func.h
  /root/research/approx/abft-ke/src/HammingAbft/HCAbft.c

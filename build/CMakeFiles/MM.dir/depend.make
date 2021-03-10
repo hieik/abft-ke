@@ -7,6 +7,8 @@ CMakeFiles/MM.dir/src/Common/hamming_cs.c.o: ../src/Common/hamming_cs.c
 
 CMakeFiles/MM.dir/src/Common/matrix_op.c.o: ../src/Common/matrix_op.c
 
+CMakeFiles/MM.dir/src/Common/util.c.o: ../src/Common/util.c
+
 CMakeFiles/MM.dir/src/MM/MM.c.o: ../src/Common/func.h
 CMakeFiles/MM.dir/src/MM/MM.c.o: ../src/MM/MM.c
 

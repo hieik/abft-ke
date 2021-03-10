@@ -245,6 +245,39 @@ src/Common/matrix_op.c.s:
 	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/src/Common/matrix_op.c.s
 .PHONY : src/Common/matrix_op.c.s
 
+src/Common/util.o: src/Common/util.c.o
+
+.PHONY : src/Common/util.o
+
+# target to build an object file
+src/Common/util.c.o:
+	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/src/Common/util.c.o
+	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/src/Common/util.c.o
+	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/src/Common/util.c.o
+.PHONY : src/Common/util.c.o
+
+src/Common/util.i: src/Common/util.c.i
+
+.PHONY : src/Common/util.i
+
+# target to preprocess a source file
+src/Common/util.c.i:
+	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/src/Common/util.c.i
+	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/src/Common/util.c.i
+	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/src/Common/util.c.i
+.PHONY : src/Common/util.c.i
+
+src/Common/util.s: src/Common/util.c.s
+
+.PHONY : src/Common/util.s
+
+# target to generate assembly for a file
+src/Common/util.c.s:
+	$(MAKE) -f CMakeFiles/Hello.dir/build.make CMakeFiles/Hello.dir/src/Common/util.c.s
+	$(MAKE) -f CMakeFiles/HCAbft.dir/build.make CMakeFiles/HCAbft.dir/src/Common/util.c.s
+	$(MAKE) -f CMakeFiles/MM.dir/build.make CMakeFiles/MM.dir/src/Common/util.c.s
+.PHONY : src/Common/util.c.s
+
 src/HammingAbft/HCAbft.o: src/HammingAbft/HCAbft.c.o
 
 .PHONY : src/HammingAbft/HCAbft.o
@@ -346,6 +379,9 @@ help:
 	@echo "... src/Common/matrix_op.o"
 	@echo "... src/Common/matrix_op.i"
 	@echo "... src/Common/matrix_op.s"
+	@echo "... src/Common/util.o"
+	@echo "... src/Common/util.i"
+	@echo "... src/Common/util.s"
 	@echo "... src/HammingAbft/HCAbft.o"
 	@echo "... src/HammingAbft/HCAbft.i"
 	@echo "... src/HammingAbft/HCAbft.s"
