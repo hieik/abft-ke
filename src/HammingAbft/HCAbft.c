@@ -4,8 +4,8 @@
 #include<math.h>
 #include<stdlib.h>
 #include"../Common/func.h"
-#define BER 1e-12
-#define N 64 // N is matrix size
+#define BER 3e-7
+#define N 1024 // N is matrix size
 
 
 int main(int argc, char** argv)
@@ -53,6 +53,11 @@ int main(int argc, char** argv)
 	int send_recv_tag = 1;
 	MPI_Comm row_comm;
 	MPI_Comm col_comm;
+
+  int* sub_a_hc_corrected_array = (int*)malloc(sizeof(int) * num_proc);
+  int* sub_b_hc_corrected_array = (int*)malloc(sizeof(int) * num_proc);
+  int sub_a_hc_is_corrected = 0;
+  int sub_b_hc_is_corrected = 0;
 
 	//SUMMA
 	int row_color;
@@ -180,12 +185,40 @@ int main(int argc, char** argv)
 	if (p_j != 0 && p_i != 0)
 	{
 		bit_flop_int(sub_a_hc, sub_a_hc_row * sub_a_hc_col, BER);
-		bit_flop_int(sub_b_hc, sub_b_hc_row * sub_b_hc_col, BER);
+	//	bit_flop_int(sub_b_hc, sub_b_hc_row * sub_b_hc_col, BER);
 	}	
 
 	//Error Correction
-	hmc_err_cor_matrix_int_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
-	hmc_err_cor_matrix_int_parityck(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
+	sub_a_hc_is_corrected = hmc_err_cor_matrix_int_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+	//hmc_err_cor_matrix_int_parityck(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
+
+	MPI_Allgather(&sub_a_hc_is_corrected, 1, MPI_INT, sub_a_hc_corrected_array, 1, MPI_INT, MPI_COMM_WORLD);
+	while (!all_ele_true(sub_a_hc_corrected_array, num_proc))
+	{
+		for (int i = 0; i < num_proc; i++)
+		{
+			if (sub_a_hc_corrected_array[i] == 0)
+			{
+				if (id_proc == i)
+				{
+					MPI_Recv(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, i / num_row * num_row, 1, MPI_COMM_WORLD, &status);
+					printf("recv node id : %d\n", i / num_row * num_row);
+				}
+				if (id_proc == i / num_row * num_row)
+				{
+					MPI_Send(sub_a_hc, sub_a_hc_row * sub_a_hc_col, MPI_INT, i, 1, MPI_COMM_WORLD);	
+					printf("send node id : %d\n", i);
+				}
+			}
+		}
+		if (p_j != 0 && p_i != 0)
+		{
+			bit_flop_int(sub_a_hc, sub_a_hc_row * sub_a_hc_col, BER);
+		}
+		sub_a_hc_is_corrected = hmc_err_cor_matrix_int_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+		MPI_Allgather(&sub_a_hc_is_corrected, 1, MPI_INT, sub_a_hc_corrected_array, 1, MPI_INT, MPI_COMM_WORLD);
+//		print_matrix(sub_a_hc_corrected_array, 1, num_proc);
+	}
 	
 	//map hamming checksum matrix to matrix
 	hamming_matrix_map_matrix_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col, sub_a, block_size_row, N);	
@@ -211,7 +244,8 @@ int main(int argc, char** argv)
 //		print_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
 //		print_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
 		//print_matrix(sub_a, block_size_row, N);
-		print_matrix(sub_c, block_size_row, block_size_col);
+//		print_matrix(sub_c, block_size_row, block_size_col);
+//		print_matrix(sub_a_hc_corrected_array, 1, num_proc);
 	}
 
 	end_intern_time = MPI_Wtime();

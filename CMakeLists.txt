@@ -11,13 +11,13 @@ set(SimGrid_LIBRARY "/home/Research/SimGrid-3.12/lib/")
 
 # add the executable
 #set(SIMULATOR_SOURCES ${PROJECT_SOURCE_DIR}/src/HammingAbft/HCAbft.c ${PROJECT_SOURCE_DIR}/src/Common/ber.c ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c ${PROJECT_SOURCE_DIR}/src/Common/func.h)
-set(SIMULATOR_SOURCES ${PROJECT_SOURCE_DIR}/src/HammingAbft/HCAbft.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/ber.c)
+set(SIMULATOR_SOURCES ${PROJECT_SOURCE_DIR}/src/HammingAbft/HCAbft.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/ber.c ${PROJECT_SOURCE_DIR}/src/Common/util.c)
 add_executable(HCAbft ${SIMULATOR_SOURCES})
 target_link_libraries(HCAbft m)
 
-set(MATRIX_MULTIPLICATION ${PROJECT_SOURCE_DIR}/src/MM/MM.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/ber.c)
+set(MATRIX_MULTIPLICATION ${PROJECT_SOURCE_DIR}/src/MM/MM.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/ber.c ${PROJECT_SOURCE_DIR}/src/Common/util.c)
 add_executable(MM ${MATRIX_MULTIPLICATION})
 target_link_libraries(MM m)
 
-set(HELLO ${PROJECT_SOURCE_DIR}/src/HammingAbft/test.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c)
+set(HELLO ${PROJECT_SOURCE_DIR}/src/HammingAbft/test.c ${PROJECT_SOURCE_DIR}/src/Common/func.h ${PROJECT_SOURCE_DIR}/src/Common/hamming_cs.c ${PROJECT_SOURCE_DIR}/src/Common/matrix_op.c ${PROJECT_SOURCE_DIR}/src/Common/util.c)
 add_executable(Hello ${HELLO})

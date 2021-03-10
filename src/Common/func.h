@@ -54,3 +54,6 @@ int hmc_matrix_row_parity_check(int row);
 
 //# of cols of Hamming checksum matrix with parity check
 int hmc_matrix_col_parity_check(int col);
+
+//all elements of a array is 1
+int all_ele_true(int *array, int size);
