@@ -184,7 +184,8 @@ int main(int argc, char** argv)
 	}	
 
 	//Error Correction
-//	hmc_err_cor_matrix_int(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+	hmc_err_cor_matrix_int_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
+	hmc_err_cor_matrix_int_parityck(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
 	
 	//map hamming checksum matrix to matrix
 	hamming_matrix_map_matrix_parityck(sub_a_hc, sub_a_hc_row, sub_a_hc_col, sub_a, block_size_row, N);	
@@ -208,8 +209,8 @@ int main(int argc, char** argv)
 	if (id_proc == 15)
 	{
 //		print_matrix(sub_a_hc, sub_a_hc_row, sub_a_hc_col);
-	//	print_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
-	//	print_matrix(sub_a, block_size_row, N);
+//		print_matrix(sub_b_hc, sub_b_hc_row, sub_b_hc_col);
+		//print_matrix(sub_a, block_size_row, N);
 		print_matrix(sub_c, block_size_row, block_size_col);
 	}
 

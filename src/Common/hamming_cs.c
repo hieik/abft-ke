@@ -88,6 +88,21 @@ void hmc_err_cor_vector_int(int* hmc_vector, int err_loc)
 		case 7:hmc_vector[6] = hmc_vector[1] + hmc_vector[2] + hmc_vector[3]; break;
 	}
 }
+//Check Hamming Vector
+int check_hamming_vector_int(int* hmc_vector)
+{
+	int is_equal_flag = -1;
+	int sum = 0;
+	for (int i = 0; i < 7; i++)
+	{
+		sum += hmc_vector[i];
+	}
+	if (sum == hmc_vector[7])
+	{
+		is_equal_flag = 1;
+	}
+	return is_equal_flag;
+}
 
 //Correct Error(Hamming Checksum Matrix)
 void hmc_err_cor_matrix_int(int* hmc_matrix, int hmc_row, int hmc_col)
@@ -102,6 +117,30 @@ void hmc_err_cor_matrix_int(int* hmc_matrix, int hmc_row, int hmc_col)
 		hmc_err_cor_vector_int(hmc_vector, err_loc);
 	}
 }
+
+//Correct Error(Hamming Checksum Matrix with parity check)
+int hmc_err_cor_matrix_int_parityck(int* hmc_matrix, int hmc_row, int hmc_col)
+{
+	//If cor_success = -1, the # of errors greater than 1, the errors can not be corrected
+	int cor_success = 1;
+	int hmc_vector_size = hmc_row * hmc_col / 8;
+	int* hmc_vector = hmc_matrix;
+	int err_loc = 0;
+	for (int i = 0; i < hmc_vector_size; i++)
+	{
+		hmc_vector = hmc_matrix + i * 8;
+		err_loc = hmc_err_loc_int(hmc_vector);
+		hmc_err_cor_vector_int(hmc_vector, err_loc);
+		if (check_hamming_vector_int(hmc_vector) < 0)
+		{
+			cor_success = -1;
+			break;
+		}
+	}
+	return cor_success;
+}
+
+//Correct Error(Hamming Checksum Matrix with parity check)
 
 // Create Hamming Checksum Matrix
 int* create_hamming_checksum_matrix(int* matrix, int row, int col)

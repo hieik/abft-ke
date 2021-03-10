@@ -8,6 +8,14 @@
 
 /root/research/approx/abft-ke/src/Common/func.h
 
+/root/research/approx/abft-ke/src/Common/hamming_cs.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+
 /root/research/approx/abft-ke/src/MM/MM.c
 stdio.h
 -

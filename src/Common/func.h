@@ -17,8 +17,14 @@ int hmc_err_loc_int(int* hmc_vector);
 //Correct Error Location(integer Hamming Checksum Vector)
 void hmc_err_cor_vector_int(int* hmc_vector, int err_loc);
 
-//Correct Error Location(integer Hamming Checksum Matrix)
+//Check Hamming Vector
+int check_hamming_vector_int(int* hmc_vector);
+
+//Correct Error(integer Hamming Checksum Matrix)
 void hmc_err_cor_matrix_int(int* hmc_vector, int hmc_row, int hmc_col);
+
+//Correct Error(Hamming Checksum Matrix with parity check)
+int hmc_err_cor_matrix_int_parityck(int* hmc_matrix, int hmc_row, int hmc_col);
 
 //Create Hamming Checksum Matrix 
 int* create_hamming_checksum_matrix(int* matrix, int row, int col);
